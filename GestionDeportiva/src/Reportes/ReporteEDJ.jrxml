@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteEDJ" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ff024ebd-af13-4762-93f1-905da1e9fc7e">
+	<property name="ireport.zoom" value="2.5937424601000023"/>
+	<property name="ireport.x" value="393"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     estadisticas_deportivas.`id_deportivo` AS estadisticas_deportivas_id_deportivo,
+     estadisticas_deportivas.`id_jugador` AS estadisticas_deportivas_id_jugador,
+     estadisticas_deportivas.`fecha_registro` AS estadisticas_deportivas_fecha_registro,
+     estadisticas_deportivas.`goles` AS estadisticas_deportivas_goles,
+     estadisticas_deportivas.`asistencias` AS estadisticas_deportivas_asistencias,
+     estadisticas_deportivas.`faltas` AS estadisticas_deportivas_faltas,
+     estadisticas_deportivas.`minutos_entrenados` AS estadisticas_deportivas_minutos_entrenados,
+     estadisticas_deportivas.`velocidad_max` AS estadisticas_deportivas_velocidad_max,
+     estadisticas_deportivas.`resistencia` AS estadisticas_deportivas_resistencia,
+     jugadores.`id_jugador` AS jugadores_id_jugador,
+     jugadores.`nombre` AS jugadores_nombre,
+     jugadores.`apellido` AS jugadores_apellido,
+     jugadores.`fecha_nacimiento` AS jugadores_fecha_nacimiento,
+     jugadores.`telefono` AS jugadores_telefono,
+     jugadores.`correo` AS jugadores_correo,
+     jugadores.`posicion` AS jugadores_posicion,
+     jugadores.`fecha_registro` AS jugadores_fecha_registro
+FROM
+     `jugadores` jugadores INNER JOIN `estadisticas_deportivas` estadisticas_deportivas ON jugadores.`id_jugador` = estadisticas_deportivas.`id_jugador`]]>
+	</queryString>
+	<field name="jugadores_id_jugador" class="java.lang.Integer"/>
+	<field name="jugadores_nombre" class="java.lang.String"/>
+	<field name="jugadores_apellido" class="java.lang.String"/>
+	<field name="jugadores_posicion" class="java.lang.String"/>
+	<field name="estadisticas_deportivas_fecha_registro" class="java.sql.Timestamp"/>
+	<field name="estadisticas_deportivas_goles" class="java.lang.Integer"/>
+	<field name="estadisticas_deportivas_asistencias" class="java.lang.Integer"/>
+	<field name="estadisticas_deportivas_faltas" class="java.lang.Integer"/>
+	<field name="estadisticas_deportivas_minutos_entrenados" class="java.lang.Integer"/>
+	<field name="estadisticas_deportivas_velocidad_max" class="java.math.BigDecimal"/>
+	<field name="estadisticas_deportivas_resistencia" class="java.lang.String"/>
+	<group name="jugadores_id_jugador">
+		<groupExpression><![CDATA[$F{jugadores_id_jugador}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="3" width="721" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="b334e0c0-41f2-4f1f-92b2-d4fd8ea2b62e"/>
+					<textField isStretchWithOverflow="true">
+						<reportElement style="SubTitle" x="2" y="0" width="695" height="24" forecolor="#FFFFFF" uuid="bbd3ab0b-f37a-4d91-b584-b9b1326e18a8"/>
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{jugadores_id_jugador}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<rectangle>
+					<reportElement x="725" y="3" width="77" height="24" backcolor="#666666" uuid="2419f363-74b7-40ff-bf7c-d78f91e512e0"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="6a054dba-1998-4600-9a48-8304bf579d9e"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="686" height="37" uuid="32226ee3-6ba2-4be9-be23-42a148ab0887"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Gesition Deportiva]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="3eff5d91-bb38-493c-8851-409c90f248e7"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Estadisticas Deportivas]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="d99ac775-4108-4323-84ce-bdc16b97916d"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="d57f0cc5-3e70-4ea5-9933-eca8fe6baf3a"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="79" height="18" forecolor="#000000" uuid="8efd9c06-59e2-48ec-a055-67a403060663"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="79" y="0" width="79" height="18" forecolor="#000000" uuid="05803f5e-0373-4465-be88-a36d9711c395"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="158" y="0" width="79" height="18" forecolor="#000000" uuid="843bd94a-660d-45a7-ba09-2d93ec1d351f"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Posicion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="237" y="0" width="79" height="18" forecolor="#000000" uuid="62709b4b-d5c3-4a76-8394-ae8dcbc41e6c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fecha de Registro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="316" y="0" width="79" height="18" forecolor="#000000" uuid="503d07bb-5263-47c7-9130-7ac83e7bc32b"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Goles]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="395" y="0" width="79" height="18" forecolor="#000000" uuid="2558259a-e4e6-4b00-bea4-f5c922863956"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Asistencias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="474" y="0" width="79" height="18" forecolor="#000000" uuid="70083896-0562-4477-a056-9f9b7f1aa0db"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Faltas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="553" y="0" width="79" height="18" forecolor="#000000" uuid="bb4c78c6-a685-4b67-89ff-80afb9e1908d"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Minutos Entrenados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="632" y="0" width="79" height="18" forecolor="#000000" uuid="1bfca6e2-3a30-4e65-b798-84dfadb7439a"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Velocidad Max.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="711" y="0" width="79" height="18" forecolor="#000000" uuid="877aa206-0593-45d9-9773-878662c91187"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Resistencia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="1bc78e4d-83c5-42d5-80f9-70590d6c9080"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="79" height="18" uuid="02d51271-cb48-4a84-88a3-43c2fe54b279"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{jugadores_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="79" y="0" width="79" height="18" uuid="3d593ca6-a942-4bb4-a9aa-e66bbe9ff2b8"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{jugadores_apellido}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="158" y="0" width="79" height="18" uuid="12e569d6-f22f-4aa0-8c7d-913eb104797f"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{jugadores_posicion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="237" y="0" width="79" height="18" uuid="21bd1d0c-f57b-4202-91eb-a485eb65eb38"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{estadisticas_deportivas_fecha_registro}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="316" y="0" width="79" height="18" uuid="071d272b-58f1-4d4a-82ae-c61d6fdb3b70"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{estadisticas_deportivas_goles}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="395" y="0" width="79" height="18" uuid="0b82fc04-5c09-4fca-a670-0b7b0046ff2d"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{estadisticas_deportivas_asistencias}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="474" y="0" width="79" height="18" uuid="df44f842-29b9-4e42-a633-f57526f46824"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{estadisticas_deportivas_faltas}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="553" y="0" width="79" height="18" uuid="2e09b3a1-81c9-4e6a-bd50-a47bdbdb0fa8"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{estadisticas_deportivas_minutos_entrenados}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="632" y="0" width="79" height="18" uuid="e320f336-c036-409c-8351-8727646f8538"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{estadisticas_deportivas_velocidad_max}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="711" y="0" width="79" height="18" uuid="03536fac-d621-456c-993c-67539bd82347"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{estadisticas_deportivas_resistencia}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="2b892d06-ef53-4c1d-9060-5ee8c7e71c52"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="d0be68b9-3172-4b5a-ac0a-427c5dc36e16"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="759e7107-1a5b-4f19-89f1-696341cf2bb7"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="46aafc56-37b1-4cc7-b0e4-98e25473aa22"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="6ca507cc-d9f6-4f0c-86ae-f02feae107c6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
